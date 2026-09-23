@@ -1,0 +1,16 @@
+# The site is a REST API with no static assets, so `publish` points at an empty
+# directory and every request is rewritten to the function serving the Express app.
+[build]
+  publish = "public"
+
+[functions]
+  directory = "netlify/functions"
+
+# `force = true` keeps the rewrite ahead of static-asset resolution. Without it a
+# 404 from the API falls through to Netlify's pretty-URL lookup (/foo.html,
+# /foo/index.html), which replaces the API's own 404 body.
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/api"
+  status = 200
+  force = true

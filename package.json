@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "@netlify/functions": "^6.0.0",
     "accepts": "^2.0.0",
     "body-parser": "^2.3.0",
     "bytes": "^3.1.2",
@@ -58,6 +59,7 @@
     "safer-buffer": "^2.1.2",
     "send": "^1.2.1",
     "serve-static": "^2.2.1",
+    "serverless-http": "^4.0.0",
     "setprototypeof": "^1.2.0",
     "side-channel": "^1.1.1",
     "side-channel-list": "^1.0.1",

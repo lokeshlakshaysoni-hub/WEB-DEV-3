@@ -25,7 +25,7 @@ router.get("/:id", (req, res) => {
 
 // POST - Add new student
 router.post("/", (req, res) => {
-    const { name, age, course } = req.body;
+    const { name, age, course } = req.body || {};
 
     if (!name || !age || !course) {
         return res.status(400).json({
@@ -60,7 +60,7 @@ router.put("/:id", (req, res) => {
         });
     }
 
-    const { name, age, course } = req.body;
+    const { name, age, course } = req.body || {};
 
     if (name) {
         student.name = name;

@@ -2,31 +2,32 @@ const express = require("express");
 
 const app = express();
 
-const logger = require("./middleware/logger");
-const studentRoutes = require("./routes/studentRoutes");
+const studentRoutes = require("./routes/studentRoutes.js");
+const logger = require("./middleware/logger.js");
 
-// Middleware
+// Middleware to read JSON data
 app.use(express.json());
+
+// Custom logger middleware
 app.use(logger);
 
-// Routes
+// Student routes
 app.use("/students", studentRoutes);
 
 // Home route
 app.get("/", (req, res) => {
-    res.send("Student Management REST API is running");
+    res.status(200).json({
+        message: "Student Management REST API is running"
+    });
 });
 
-// Error handling
+// Handle unknown routes
 app.use((req, res) => {
     res.status(404).json({
         message: "Route not found"
     });
 });
 
-// Start server
-const PORT = 3000;
+// Export app for Vercel
+module.exports = app;
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
